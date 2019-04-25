@@ -18,16 +18,16 @@ Any changes to the code will be reflected after a page refresh.
 
 ## Deploying
 
-*As Cloud Run is in Beta you'll need to install the gcloud beta component:*
+**As Cloud Run is in Beta you'll need to install the gcloud beta component:**
 
 `gcloud components install beta`.
 
-*Using Cloud Build, build and host your image:*
+**Using Cloud Build, build and host your image:**
 
 `gcloud builds submit --tag gcr.io/[PROJECT-ID]/helloworld`
 Replacing [PROJECT-ID] with your GCP project ID. You can view a list of projects available to you by using `gcloud projects list`.
 
-*Deploy your image to Cloud Run:*
+**Deploy your image to Cloud Run:**
 
 You can either deploy your app through the web UI at [cloud.google.com/run](https://cloud.google.com/run) or by via the command-line as shown below.
 `gcloud beta run deploy --image gcr.io/[PROJECT-ID]/helloworld`
