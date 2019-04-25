@@ -30,6 +30,7 @@ Replacing [PROJECT-ID] with your GCP project ID. You can view a list of projects
 **Deploy your image to Cloud Run:**
 
 You can either deploy your app through the web UI at [cloud.google.com/run](https://cloud.google.com/run) or by via the command-line as shown below.
+
 `gcloud beta run deploy --image gcr.io/[PROJECT-ID]/helloworld`
 Again replacing [PROJECT-ID] with your GCP project ID.
 
