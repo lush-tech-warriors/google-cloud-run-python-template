@@ -7,5 +7,5 @@ services:
     ports:
       - "8080:${PORT}"
     volumes:
-      - .:/app
+      - ./app:/app
     command: gunicorn --bind :$PORT --workers 1 --threads 8 app:app --reload
