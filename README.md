@@ -2,6 +2,19 @@
 
 A basic template for locally developing, live debugging and deploying a Flask app to [Cloud Run](https://cloud.google.com/run/).
 
+Table of Contents
+=================
+
+   * [Google Cloud Run Flask Template](#google-cloud-run-flask-template)
+   * [Table of Contents](#table-of-contents)
+      * [Requirements](#requirements)
+      * [Local Development &amp; Live Debugging](#local-development--live-debugging)
+      * [Deploying](#deploying)
+      
+      * [Extras](#extras)
+         * [Continuous Deployment from Github](#continuous-deployment-from-github)
+
+
 ## Requirements
 
 [Docker](https://docs.docker.com/install/) for local development with live debugging.
@@ -38,13 +51,17 @@ When prompted, select region us-central1 as Cloud Run is currently only availabl
 
 Wait a few moments until the deployment is complete. On success, the command line displays the service URL.
 
-## Continuous Deployment from Github
+---
 
-### Edit cloudbuild.yaml
+## Extras
+
+### Continuous Deployment from Github
+
+#### Edit cloudbuild.yaml
 
 In the repository root edit cloudbuild.yaml by replacing **[SERVICE-NAME]** and **[REGION]** with the name and region of the Cloud Run service you are deploying to.
 
-### Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
+#### Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
 
 We'll need to need to know the name of your Cloud Build service account, it will have the suffix *@cloudbuild.gserviceaccount.com*.
 
@@ -59,7 +76,7 @@ Once we have the we the Cloud Build service account we can grant the *run.admin*
 
  `gcloud projects add-iam-policy-binding tech-warriors-stage-global --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
 
-### Create a Build Trigger
+#### Create a Build Trigger
 
 *We'll need to do this part using the cloud.google.com site as there is not yet a way to create a build trigger through gcloud, see [this issue](https://github.com/GoogleCloudPlatform/cloud-builders/issues/99) if you are interested in more information.*
 
