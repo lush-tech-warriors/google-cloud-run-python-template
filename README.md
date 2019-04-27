@@ -5,14 +5,12 @@ A basic template for locally developing, live debugging and deploying a Flask ap
 Table of Contents
 =================
 
-   * [Google Cloud Run Flask Template](#google-cloud-run-flask-template)
-   * [Table of Contents](#table-of-contents)
-      * [Requirements](#requirements)
-      * [Local Development &amp; Live Debugging](#local-development--live-debugging)
-      * [Deploying](#deploying)
-      
-      * [Extras](#extras)
-         * [Continuous Deployment from Github](#continuous-deployment-from-github)
+   * [Requirements](#requirements)
+   * [Local Development &amp; Live Debugging](#local-development--live-debugging)
+   * [Deploying](#deploying)
+
+   * [Optional Extras](#optional-extras)
+       * [Continuous Deployment from Github](#continuous-deployment-from-github)
 
 
 ## Requirements
@@ -53,7 +51,7 @@ Wait a few moments until the deployment is complete. On success, the command lin
 
 ---
 
-## Extras
+## Optional Extras
 
 ### Continuous Deployment from Github
 
