@@ -42,7 +42,7 @@ Wait a few moments until the deployment is complete. On success, the command lin
 
 ### Edit cloudbuild.yaml
 
-In the repository root edit cloudbuild.yaml by replacing [SERVICE-NAME] and [REGION] with the name and region of the Cloud Run service you are deploying to.
+In the repository root edit cloudbuild.yaml by replacing **[SERVICE-NAME]** and **[REGION]** with the name and region of the Cloud Run service you are deploying to.
 
 ### Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
 
@@ -56,6 +56,7 @@ Replacing [PROJECT-ID] with your GCP project ID.
 Once we have the we the Cloud Build service account we can grant the *run.admin* role to allow Cloud Build to manipulate Cloud Run resources, and the *iam.serviceAccountUser* role to allow Cloud Build to act as other service accounts, which include your Cloud Run services, by using the following:
 
  `gcloud projects add-iam-policy-binding tech-warriors-stage-global --member='[SERVICE-ACCOUNT]' --role='roles/run.admin'`
+
  `gcloud projects add-iam-policy-binding tech-warriors-stage-global --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
 
 ### Create a Build Trigger
