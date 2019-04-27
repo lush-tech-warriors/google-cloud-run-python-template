@@ -55,11 +55,11 @@ Wait a few moments until the deployment is complete. On success, the command lin
 
 ### Continuous Deployment from Github
 
-#### Edit cloudbuild.yaml
+#### 1. Edit cloudbuild.yaml
 
 In the repository root edit cloudbuild.yaml by replacing **[SERVICE-NAME]** and **[REGION]** with the name and region of the Cloud Run service you are deploying to.
 
-#### Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
+#### 2. Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
 
 We'll need to need to know the name of your Cloud Build service account, it will have the suffix *@cloudbuild.gserviceaccount.com*.
 
@@ -74,7 +74,7 @@ Once we have the we the Cloud Build service account we can grant the *run.admin*
 
  `gcloud projects add-iam-policy-binding tech-warriors-stage-global --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
 
-#### Create a Build Trigger
+#### 3. Create a Build Trigger
 
 *We'll need to do this part using the cloud.google.com site as there is not yet a way to create a build trigger through gcloud, see [this issue](https://github.com/GoogleCloudPlatform/cloud-builders/issues/99) if you are interested in more information.*
 
