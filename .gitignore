@@ -84,3 +84,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Hide GCP Service Account
+service_account/sa.json

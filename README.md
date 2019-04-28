@@ -11,6 +11,7 @@ Table of Contents
 
    * [Optional Extras](#optional-extras)
        * [Continuous Deployment from Github](#continuous-deployment-from-github)
+       * [Connecting to GCP services](#connecting-to-gcp-services)
 
 
 ## Requirements
@@ -89,3 +90,31 @@ Once we have the we the Cloud Build service account we can grant the *run.admin*
 5. Click Create.
 
 **You're finished! From this point on, anytime you push to your repository, you automatically trigger a build and a deployment to your Cloud Run service.**
+
+---
+
+### Connecting to GCP services
+
+You can use Cloud Run with the supported GCP services using the client libraries provided by these products. For a list of services supported, and not [see here](https://cloud.google.com/run/docs/using-gcp-services#services_and_tools_recommended_for_use).
+
+There is plenty official documentation with examples of how to use Python client libraries for each GCP service, you may find it easier to read through these first but for quick reference some examples of common services has been supplied in [gcp-services-examples](gcp-services-examples).
+
+#### Connecting to GCP services in Cloud run
+
+Note that Cloud Run uses a default runtime service account that has the **Project > Editor** role, which means it is able to call all GCP APIs. You do not need to provide credentials manually inside Cloud Run container instances when using the GCP client libraries.
+
+#### Connecting to GCP services locally
+
+When developing locally however you will need to supply credentials.
+
+Create the service account. Replace **[NAME]** with a name for the service account.
+
+1. `gcloud iam service-accounts create [NAME]`
+
+Grant permissions to the service account. Replace **[PROJECT_ID]** with your project ID.
+
+2. `gcloud projects add-iam-policy-binding [PROJECT_ID] --member "serviceAccount:[NAME]@[PROJECT_ID].iam.gserviceaccount.com" --role "roles/owner"`
+
+Generate the key file and store it in the **service_account** directory of the repository.
+
+`gcloud iam service-accounts keys create service_account/sa.json --iam-account [NAME]@[PROJECT_ID].iam.gserviceaccount.com`
