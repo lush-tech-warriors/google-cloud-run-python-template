@@ -1,6 +1,5 @@
-[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/) [![Google Cloud Run Python Template Issues](https://img.shields.io/github/issues/LUSHDigital/Google-Cloud-Run-Python-Template.svg)](https://github.com/LUSHDigital/Google-Cloud-Run-Python-Template/issues)
-
 # Google Cloud Run Python Template
+[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/) [![Google Cloud Run Python Template Issues](https://img.shields.io/github/issues/LUSHDigital/Google-Cloud-Run-Python-Template.svg)](https://github.com/LUSHDigital/Google-Cloud-Run-Python-Template/issues)
 
 A basic template for locally developing, live debugging and deploying a Python app to [Cloud Run](https://cloud.google.com/run/), with examples for [Flask](http://flask.pocoo.org/) & [Hug](https://www.hug.rest/).
 
