@@ -25,7 +25,7 @@ Table of Contents
 
 Docker expects your app to live in the `app` directory, you can rename either [flask-app](flask-app) or [hug-app](hug-app) to `app` to use either template.
 
-Edit `.env` and uncomment the `ENDPOINT` variable for either Flask or Hug.
+Edit [Dockerfile](Dockerfile) and uncomment the `CMD` line for either Flask or Hug.
 
 ## Local Development & Live Debugging
 
