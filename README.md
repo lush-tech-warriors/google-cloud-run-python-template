@@ -15,15 +15,15 @@ Table of Contents
        * [Connecting to GCP services](#connecting-to-gcp-services)
 
 
-## Setup
-
-Docker expects your app to live in the `app` directory, you can rename either [flask-app](flask-app) or [hug-app](hug-app) to `app` to use either template.
-
 ## Requirements
 
 [Docker](https://docs.docker.com/install/) for local development with live debugging.
 
 [gcloud](https://cloud.google.com/sdk/install) to deploy to Cloud Run.
+
+## Setup
+
+Docker expects your app to live in the `app` directory, you can rename either [flask-app](flask-app) or [hug-app](hug-app) to `app` to use either template.
 
 ## Local Development & Live Debugging
 
