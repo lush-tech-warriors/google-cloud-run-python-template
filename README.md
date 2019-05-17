@@ -25,11 +25,13 @@ Table of Contents
 
 Docker expects your app to live in the `app` directory, you can rename either [flask-app](flask-app) or [hug-app](hug-app) to `app` to use either template.
 
+Edit `.env` and uncomment the `ENDPOINT` variable for either Flask or Hug.
+
 ## Local Development & Live Debugging
 
 The app can be built with `docker-compose build` and then run with `docker-compose run`.
 
-After which you'll be able to view the app at [localhost:8080](http://localhost:8080/).
+After which you'll be able to view the app at [localhost:80](http://localhost:80/).
 
 Any changes to the code will be reflected after a page refresh.
 
@@ -102,7 +104,7 @@ Once we have the we the Cloud Build service account we can grant the *run.admin*
 
 You can use Cloud Run with the supported GCP services using the client libraries provided by these products. For a list of services supported, and not [see here](https://cloud.google.com/run/docs/using-gcp-services#services_and_tools_recommended_for_use).
 
-There is plenty official documentation with examples of how to use Python client libraries for each GCP service, you may find it easier to read through these first but for quick reference some examples of common services has been supplied in [gcp-services-examples](gcp-services-examples).
+There is plenty official documentation with examples of how to use Python client libraries for each GCP service, you may find it easier to read through these first but for quick reference some examples of common services has been supplied in [gcp-services-examples](gcp-services-examples). You will need to uncomment the relevant lines in `app/requirements.txt` for the GCP services that you use.
 
 #### Connecting to GCP services in Cloud run
 

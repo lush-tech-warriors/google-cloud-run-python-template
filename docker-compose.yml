@@ -6,8 +6,8 @@ services:
       - PORT=${PORT}
       - GOOGLE_APPLICATION_CREDENTIALS=/tmp/keys/sa.json
     ports:
-      - "8080:${PORT}"
+      - "80:${PORT}"
     volumes:
       - ./app:/app
       - ./service_account:/tmp/keys:ro
-    command: gunicorn --bind :$PORT --workers 1 --threads 8 app:app --reload
+    command: gunicorn --bind :$PORT --workers 1 --threads 8 app:${ENDPOINT} --reload
