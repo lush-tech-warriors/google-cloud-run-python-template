@@ -1,11 +1,12 @@
-# Google Cloud Run Flask Template
+# Google Cloud Run Python Template
 
-A basic template for locally developing, live debugging and deploying a Flask app to [Cloud Run](https://cloud.google.com/run/).
+A basic template for locally developing, live debugging and deploying a Python app to [Cloud Run](https://cloud.google.com/run/), with examples for [Flask](http://flask.pocoo.org/) & [Hug](https://www.hug.rest/).
 
 Table of Contents
 =================
 
    * [Requirements](#requirements)
+   * [Setup](#setup)
    * [Local Development &amp; Live Debugging](#local-development--live-debugging)
    * [Deploying](#deploying)
 
@@ -13,6 +14,10 @@ Table of Contents
        * [Continuous Deployment from Github](#continuous-deployment-from-github)
        * [Connecting to GCP services](#connecting-to-gcp-services)
 
+
+## Setup
+
+Docker expects your app to live in the `app` directory, you can rename either [flask-app](flask-app) or [hug-app](hug-app) to `app` to use either template.
 
 ## Requirements
 
