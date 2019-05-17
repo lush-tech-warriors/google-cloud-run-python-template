@@ -79,9 +79,11 @@ Replacing [PROJECT-ID] with your GCP project ID.
 
 Once we have the we the Cloud Build service account we can grant the *run.admin* role to allow Cloud Build to manipulate Cloud Run resources, and the *iam.serviceAccountUser* role to allow Cloud Build to act as other service accounts, which include your Cloud Run services, by using the following:
 
- `gcloud projects add-iam-policy-binding tech-warriors-stage-global --member='[SERVICE-ACCOUNT]' --role='roles/run.admin'`
+ `gcloud projects add-iam-policy-binding [PROJECT_ID] --member='[SERVICE-ACCOUNT]' --role='roles/run.admin'`
 
- `gcloud projects add-iam-policy-binding tech-warriors-stage-global --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
+ `gcloud projects add-iam-policy-binding [PROJECT_ID] --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
+
+Again, in both, replacing [PROJECT-ID] with your GCP project ID, and [SERVICE-ACCOUNT] with the account discovered in the previous step.
 
 #### 3. Create a Build Trigger
 
