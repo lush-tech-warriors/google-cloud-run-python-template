@@ -10,4 +10,3 @@ services:
     volumes:
       - ./app:/app
       - ./service_account:/tmp/keys:ro
-    command: gunicorn --bind :$PORT --workers 1 --threads 8 app:${ENDPOINT} --reload
