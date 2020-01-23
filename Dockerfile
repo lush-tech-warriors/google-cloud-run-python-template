@@ -10,8 +10,7 @@ COPY ./app .
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
-# uncomment this line for Flask.
-# CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app
 
-# uncomment this line for Hug.
+# or for Hug.
 # CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:__hug_wsgi__
