@@ -7,6 +7,6 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
   # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['beta', 'run', 'deploy', '$REPO_NAME', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME']
+  args: ['beta', 'run', 'deploy', '$REPO_NAME', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME', '--platform', 'managed']
 images:
 - gcr.io/$PROJECT_ID/$REPO_NAME
