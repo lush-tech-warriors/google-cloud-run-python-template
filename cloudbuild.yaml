@@ -8,7 +8,8 @@ steps:
   # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['beta', 'run', 'deploy', '$REPO_NAME', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME', '--region', '${_REGION}', '--platform', 'managed', '--allow-unauthenticated']
-  substitutions:
-    _REGION: europe-west1 # default value
+
+substitutions:
+  _REGION: europe-west1 # default value}
 images:
 - gcr.io/$PROJECT_ID/$REPO_NAME
