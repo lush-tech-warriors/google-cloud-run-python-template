@@ -1,34 +1,26 @@
 # Google Cloud Run Python Template
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/) [![Google Cloud Run Python Template Issues](https://img.shields.io/github/issues/LUSHDigital/Google-Cloud-Run-Python-Template.svg)](https://github.com/LUSHDigital/Google-Cloud-Run-Python-Template/issues) [![Requirements Status](https://requires.io/github/LUSHDigital/Google-Cloud-Run-Python-Template/requirements.svg?branch=master)](https://requires.io/github/LUSHDigital/Google-Cloud-Run-Python-Template/requirements/?branch=master)
 
-A basic template for locally developing, live debugging and deploying a Python app to [Cloud Run](https://cloud.google.com/run/), with templates for [Flask](http://flask.pocoo.org/) & [Hug](https://www.hug.rest/) apps, and examples of connecting to GCP services.
+A quickstart template for deploying a Python app to [Cloud Run](https://cloud.google.com/run/), wih a ready to use local development environment and live debugging, plus lots of optional extras.
 
 Table of Contents
 =================
 
-   * [Requirements](#requirements)
-   * [Setup](#setup)
    * [Local Development &amp; Live Debugging](#local-development--live-debugging)
    * [Deploying](#deploying)
+     * [One off Deployment](#one-off-deployment)
+     * [Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
 
    * [Optional Extras](#optional-extras)
-       * [Continuous Deployment from Github](#continuous-deployment-from-github)
        * [Connecting to GCP services](#connecting-to-gcp-services)
+       * [Hug not Flask](hug-not-flask)
 
-
-## Requirements
-
-[Docker](https://docs.docker.com/install/) for local development with live debugging.
-
-[gcloud](https://cloud.google.com/sdk/install) to deploy to Cloud Run.
-
-## Setup
-
-Docker expects your app to live in the `app` directory, you can rename either [flask-app](flask-app) or [hug-app](hug-app) to `app` to use either template.
-
-Edit [Dockerfile](Dockerfile) and uncomment the `CMD` line for either Flask or Hug.
 
 ## Local Development & Live Debugging
+
+
+> Requirements: [Docker](https://docs.docker.com/install/).
+
 
 The app can be built with `docker-compose build` and then run with `docker-compose run`.
 
@@ -37,6 +29,10 @@ After which you'll be able to view the app at [localhost:80](http://localhost:80
 Any changes to the code will be reflected after a page refresh.
 
 ## Deploying
+
+### One-off Deployment
+
+> Requirements: [gcloud](https://cloud.google.com/sdk/install).
 
 **As Cloud Run is in Beta you'll need to install the gcloud beta component:**
 
@@ -58,11 +54,9 @@ When prompted, select region us-central1 as Cloud Run is currently only availabl
 
 Wait a few moments until the deployment is complete. On success, the command line displays the service URL.
 
----
+### Continuous Deployment from Github via gCloud
 
-## Optional Extras
-
-### Continuous Deployment from Github
+> Requirements: [gcloud](https://cloud.google.com/sdk/install).
 
 #### 1. Edit cloudbuild.yaml
 
@@ -103,6 +97,8 @@ Again, in both, replacing [PROJECT-ID] with your GCP project ID, and [SERVICE-AC
 
 ---
 
+## Optional Extras
+
 ### Connecting to GCP services
 
 You can use Cloud Run with the supported GCP services using the client libraries provided by these products. For a list of services supported, and not [see here](https://cloud.google.com/run/docs/using-gcp-services#services_and_tools_recommended_for_use).
@@ -128,3 +124,7 @@ Grant permissions to the service account. Replace **[PROJECT_ID]** with your pro
 Generate the key file and store it in the **service_account** directory of the repository.
 
 `gcloud iam service-accounts keys create service_account/sa.json --iam-account [NAME]@[PROJECT_ID].iam.gserviceaccount.com`
+
+### Hug not Flask
+
+If you'd rather use [Hug](https://www.hug.rest/) instead of Flask you can delete the `app` direcory and rename [hug-app](hug-app) to `app`, you'll also need to edit [Dockerfile](Dockerfile) and remove the final `CMD` line, then uncomment the `CMD` line Hug.
