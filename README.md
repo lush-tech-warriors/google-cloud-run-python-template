@@ -56,11 +56,11 @@ Any changes to the code will be reflected after a page refresh.
 
 ## 🚀 Deploying to Cloud Run<a name = "deploying"></a>
 
-- Option A - [Continuous Deployment from Github via Terraform](#continuous-deployment-from-github-via-terrafrom)
-- Option B - [One off Deployment](#one-off-deployment)
-- Option C - [Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
+- [Deployment Option A - Continuous Deployment from Github via Terraform](#continuous-deployment-from-github-via-terrafrom)
+- [Deployment Option B - One off Deployment](#one-off-deployment)
+- [Deployment Option C - Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
 
-### Continuous Deployment from Github via Terrafrom
+### Deployment Option A -  Continuous Deployment from Github via Terrafrom <a name = "continuous-deployment-from-github-via-terrafrom"></a>
 
 > Requirements: [Terraform](https://www.terraform.io/).
 
@@ -70,7 +70,7 @@ Any changes to the code will be reflected after a page refresh.
 
 3. run `terraform apply `, Terraform will show you what it intends to do, type `yes` to deploy.
 
-### One-off Deployment
+### Deployment Option B -  One-off Deployment <a name = "one-off-deployment"></a>
 
 > Requirements: [gcloud](https://cloud.google.com/sdk/install).
 
@@ -94,7 +94,7 @@ When prompted, select region us-central1 as Cloud Run is currently only availabl
 
 Wait a few moments until the deployment is complete. On success, the command line displays the service URL.
 
-### Continuous Deployment from Github via gCloud
+### Deployment Option C - Continuous Deployment from Github via gCloud <a name = "continuous-deployment-from-github-via-gcloud"></a>
 
 > Requirements: [gcloud](https://cloud.google.com/sdk/install).
 
