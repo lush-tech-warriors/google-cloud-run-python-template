@@ -38,7 +38,7 @@ __💥Just get me a Cloud Run Python App!💥__
 
 The quickest way to get started is it fork this repo and deploy using Terraform ([see how here](#continuous-deployment-from-github-via-terrafrom])).
 
-Then make your code changes in [/app](../app), commit and push to GitHub, this will trigger a automatic build and deployment, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), once built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
+Then make your code changes in [/app](app), commit and push to GitHub, this will trigger a automatic build and deployment, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), once built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
 
 ## 💻 Local Development & Live Debugging <a name = "local_development"></a>
 
@@ -47,7 +47,7 @@ Then make your code changes in [/app](../app), commit and push to GitHub, this w
 
 The app can be built with `docker-compose build` and then run with `docker-compose run`. After which you'll be able to view the app at [localhost:80](http://localhost:80/).
 
-The application lives in [/app](../app), a "Hello World" Flask app has been supplied by default but you can of course change this to whatever you prefer.
+The application lives in [/app](app), a "Hello World" Flask app has been supplied by default but you can of course change this to whatever you prefer.
 
 There is also a [Hug](https://www.hug.rest/) template available, see [Hug not Flask](hug-not-flask).
 
