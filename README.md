@@ -66,7 +66,7 @@ Any changes to the code will be reflected after a page refresh.
 
 1. run `terraform init` to make sure you have everything you need, Terraform will prompt for permission to pull any missing requirements.
 
-2. Update [variables.tf](../variables.tf) with your information.
+2. Update [variables.tf](variables.tf) with your information.
 
 3. run `terraform apply `, Terraform will show you what it intends to do, type `yes` to deploy.
 
