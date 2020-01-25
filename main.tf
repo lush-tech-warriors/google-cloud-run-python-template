@@ -1,10 +1,10 @@
-provider "google" {
+provider "google-beta" {
   project     = var.gcp-project-id
   region      = var.region
 }
 
 resource "google_cloudbuild_trigger" "filename-trigger"  {
-  provider = google
+  provider = google-beta
 
   github {
     owner = var.owner
@@ -19,8 +19,4 @@ resource "google_cloudbuild_trigger" "filename-trigger"  {
 }
 
   filename = "cloudbuild.yaml"
-}
-
-output "url" {
-  value = google_cloudbuild_trigger.filename-trigger.status[0].url
 }
