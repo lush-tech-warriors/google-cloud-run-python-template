@@ -36,7 +36,7 @@ A template for developing and deploying a [Cloud Run](https://cloud.google.com/r
 
 __💥Just get me a Cloud Run Python App!💥__
 
-The quickest way to get started is it fork this repo and deploy using Terraform ([see how here](#continuous-deployment-from-github-via-terrafrom])).
+The quickest way to get started is it fork this repo and deploy using Terraform ([see how here](#continuous-deployment-from-github-via-terrafrom)).
 
 Then make your code changes in [/app](app), commit and push to GitHub, this will trigger a automatic build and deployment, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), once built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
 
