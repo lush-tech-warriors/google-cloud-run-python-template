@@ -1,4 +1,4 @@
-hug==2.5.5
-gunicorn==19.9.0
+hug==2.6.0
+gunicorn==20.0.4`
 
 # google-cloud-storage==1.14.0
