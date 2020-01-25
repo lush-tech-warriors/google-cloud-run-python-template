@@ -1,34 +1,74 @@
-# Google Cloud Run Python Template
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://i.imgur.com/j6CDEN6.png" alt="LUSH logo"></a>
+</p>
+
+<h3 align="center">Google Cloud Run Python Template</h3>
+
+<div align="center">
+
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/) [![Google Cloud Run Python Template Issues](https://img.shields.io/github/issues/LUSHDigital/Google-Cloud-Run-Python-Template.svg)](https://github.com/LUSHDigital/Google-Cloud-Run-Python-Template/issues) [![Requirements Status](https://requires.io/github/LUSHDigital/Google-Cloud-Run-Python-Template/requirements.svg?branch=master)](https://requires.io/github/LUSHDigital/Google-Cloud-Run-Python-Template/requirements/?branch=master)
 
-A quickstart template for deploying a Python app to [Cloud Run](https://cloud.google.com/run/), wih a ready to use local development environment and live debugging, plus lots of optional extras.
+</div>
 
-Table of Contents
-=================
+---
 
-   * [Local Development &amp; Live Debugging](#local-development--live-debugging)
-   * [Deploying](#deploying)
-     * [One off Deployment](#one-off-deployment)
-     * [Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
+## 📝 Table of Contents
+- [About](#about)
+- [Quickstart](#quickstart)
+- [Local Development &amp; Live Debugging](#local_development)
+- [Deploying](#deploying)
+  - [Continuous Deployment from Github via Terraform](#continuous-deployment-from-github-via-terrafrom)
+  - [One off Deployment](#one-off-deployment)
+  - [Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
+- [Extending & Developing](#extending_and_developing)
+- [Optional Extras](#optional-extras)
+    - [Connecting to GCP services](#connecting-to-gcp-services)
+    - [Hug not Flask](hug-not-flask)
+- [TODO](#TODO)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
 
-   * [Optional Extras](#optional-extras)
-       * [Connecting to GCP services](#connecting-to-gcp-services)
-       * [Hug not Flask](hug-not-flask)
+## 📖 About <a name = "about"></a>
+A template for developing and deploying a [Cloud Run](https://cloud.google.com/run/) Python app, with a ready to use local development environment, automated builds and lots of optional extras.
 
+## 👟 Quickstart <a name = "quickstart"></a>
 
-## Local Development & Live Debugging
+__💥Just get me a Cloud Run Python App!💥__
 
+The quickest way to get started is it fork this repo and deploy using Terraform ([see how here](#continuous-deployment-from-github-via-terrafrom])).
+
+Then make your code changes in [/app](../app), commit and push to GitHub, this will trigger a automatic build and deployment, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), once built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
+
+## 💻 Local Development & Live Debugging <a name = "local_development"></a>
 
 > Requirements: [Docker](https://docs.docker.com/install/).
 
 
-The app can be built with `docker-compose build` and then run with `docker-compose run`.
+The app can be built with `docker-compose build` and then run with `docker-compose run`. After which you'll be able to view the app at [localhost:80](http://localhost:80/).
 
-After which you'll be able to view the app at [localhost:80](http://localhost:80/).
+The application lives in [/app](../app), a "Hello World" Flask app has been supplied by default but you can of course change this to whatever you prefer.
+
+There is also a [Hug](https://www.hug.rest/) template available, see [Hug not Flask](hug-not-flask).
 
 Any changes to the code will be reflected after a page refresh.
 
-## Deploying
+
+## 🚀 Deploying to Cloud Run<a name = "deploying"></a>
+
+- Option A - [Continuous Deployment from Github via Terraform](#continuous-deployment-from-github-via-terrafrom)
+- Option B - [One off Deployment](#one-off-deployment)
+- Option C - [Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
+
+### Continuous Deployment from Github via Terrafrom
+
+> Requirements: [Terraform](https://www.terraform.io/).
+
+1. run `terraform init` to make sure you have everything you need, Terraform will prompt for permission to pull any missing requirements.
+
+2. Update [variables.tf](../variables.tf) with your information.
+
+3. run `terraform apply `, Terraform will show you what it intends to do, type `yes` to deploy.
 
 ### One-off Deployment
 
@@ -95,9 +135,15 @@ Again, in both, replacing [PROJECT-ID] with your GCP project ID, and [SERVICE-AC
 
 **You're finished! From this point on, anytime you push to your repository, you automatically trigger a build and a deployment to your Cloud Run service.**
 
----
+## ☑ TODO <a name = "TODO"></a>
 
-## Optional Extras
+- [x] Add Terraform.
+- [ ] This TODO list.
+
+## ✍️ Authors <a name = "authors"></a>
+- [@Simon-Ince](https://github.com/Simon-Ince)
+
+## 🔧 Optional Extras
 
 ### Connecting to GCP services
 
