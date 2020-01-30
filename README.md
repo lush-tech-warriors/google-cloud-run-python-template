@@ -36,9 +36,9 @@ A template for developing and deploying a [Cloud Run](https://cloud.google.com/r
 
 __💥Just get me a Cloud Run Python App!💥__
 
-The quickest way to get started is it fork this repo and deploy using Terraform ([see how here](#continuous-deployment-from-github-via-terrafrom)).
+The quickest way to get started is it fork this repo and deploy by following the "[Continuous Deployment from Github via Cloud Build](#continuous-deployment-from-github-via-cloud-build)" instructions.
 
-Then make your code changes in [/app](app), commit and push to GitHub, this will trigger a automatic build and deployment, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), once built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
+Then make your code changes in [/app](app), commit and push to GitHub, this will trigger an automatic build and deployment, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), once built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
 
 ## 💻 Local Development & Live Debugging <a name = "local_development"></a>
 
@@ -56,11 +56,46 @@ Any changes to the code will be reflected after a page refresh.
 
 ## 🚀 Deploying to Cloud Run<a name = "deploying"></a>
 
-- [Deployment Option A - Continuous Deployment from Github via Terraform](#continuous-deployment-from-github-via-terrafrom)
-- [Deployment Option B - One off Deployment](#one-off-deployment)
-- [Deployment Option C - Continuous Deployment from Github via gCloud](#continuous-deployment-from-github-via-gcloud)
+- [Deployment Option A - Continuous Deployment from Github via Cloud Build](#continuous-deployment-from-github-via-cloud-build)
+- [Deployment Option B - Continuous Deployment from Github via Terraform](#continuous-deployment-from-github-via-terrafrom)
+- [Deployment Option C - One off Deployment](#one-off-deployment)
 
-### Deployment Option A -  Continuous Deployment from Github via Terrafrom <a name = "continuous-deployment-from-github-via-terrafrom"></a>
+### Deployment Option A - Continuous Deployment from Github via Cloud Build <a name = "continuous-deployment-from-github-via-gcloud"></a>
+
+> Requirements: [gcloud](https://cloud.google.com/sdk/install).
+
+#### 1. Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
+
+We'll need to need to know the name of your Cloud Build service account, it will have the suffix *@cloudbuild.gserviceaccount.com*.
+
+You can find it using the following:
+
+`gcloud projects get-iam-policy [PROJECT-ID] | grep @cloudbuild.gserviceaccount.com`
+Replacing [PROJECT-ID] with your GCP project ID.
+
+Once we know the Cloud Build service account we can grant the *run.admin* role to allow Cloud Build to manipulate Cloud Run resources, and the *iam.serviceAccountUser* role to allow Cloud Build to act as other service accounts, which include your Cloud Run services, by using the following:
+
+ `gcloud projects add-iam-policy-binding [PROJECT_ID] --member='[SERVICE-ACCOUNT]' --role='roles/run.admin'`
+
+ `gcloud projects add-iam-policy-binding [PROJECT_ID] --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
+
+Again, in both, replacing [PROJECT-ID] with your GCP project ID, and [SERVICE-ACCOUNT] with the account discovered in the previous step.
+
+#### 2. Connect repository & Create a Build Trigger
+
+*The gcloud build trigger command is currently in alpha and has limited functionality, connecting a GitHub source is not get supported through gcloud and so has to be done via the UI, enabling the trigger is currently easier through the UI*
+
+1. Visit the [Cloud Build Repository Connect page](https://console.cloud.google.com/cloud-build/triggers/connect)
+
+2. Select the `GitHub (Cloud Build GitHub App)` and follow the steps though to the final page.
+
+3. On the final page, select `Create Trigger`. You should be taken back to the main Build triggers page.
+
+**You're finished! From this point on, anytime you push to your repository, you automatically trigger a build and a deployment to your Cloud Run service.**
+
+### Deployment Option B -  Continuous Deployment from Github via Terrafrom <a name = "continuous-deployment-from-github-via-terrafrom"></a>
+
+*The gcloud build trigger command is currently in alpha and has limited functionality, connecting a GitHub source is not get supported through gcloud and so has to be done via the UI, and therefore not supported by Terraform, enabling the trigger is currently easier through the UI but I have created a Terraform config both incase you need to keep infrastructure as code and in the hopes that this can be expanded upon in the future.*
 
 > Requirements: [Terraform](https://www.terraform.io/).
 
@@ -68,9 +103,11 @@ Any changes to the code will be reflected after a page refresh.
 
 2. Update [variables.tf](variables.tf) with your information.
 
-3. run `terraform apply `, Terraform will show you what it intends to do, type `yes` to deploy.
+3. run `terraform apply `, Terraform will supply you with warning and link if your GitHub repo is not linked to Google Cloud, if all is well it will then show you what it intends to build, type `yes` to deploy.
 
-### Deployment Option B -  One-off Deployment <a name = "one-off-deployment"></a>
+Your service will be built and deployed every time you `git push` to the master branch. Once you have pushed a commit, you'll see your app building at [console.cloud.google.com/cloud-build/triggers](https://console.cloud.google.com/cloud-build/triggers), and once it's built you'll find your app at [console.cloud.google.com/run](https://console.cloud.google.com/run).
+
+### Deployment Option C -  One-off Deployment <a name = "one-off-deployment"></a>
 
 > Requirements: [gcloud](https://cloud.google.com/sdk/install).
 
@@ -93,47 +130,6 @@ Again replacing [PROJECT-ID] with your GCP project ID.
 When prompted, select region us-central1 as Cloud Run is currently only available here, confirm the service name, and respond y to allow unauthenticated invocations.
 
 Wait a few moments until the deployment is complete. On success, the command line displays the service URL.
-
-### Deployment Option C - Continuous Deployment from Github via gCloud <a name = "continuous-deployment-from-github-via-gcloud"></a>
-
-> Requirements: [gcloud](https://cloud.google.com/sdk/install).
-
-#### 1. Edit cloudbuild.yaml
-
-In the repository root edit cloudbuild.yaml by replacing **[SERVICE-NAME]** and **[REGION]** with the name and region of the Cloud Run service you are deploying to.
-
-#### 2. Grant the "Cloud Run Admin" and "Service Account User" roles to the Cloud Build service account
-
-We'll need to need to know the name of your Cloud Build service account, it will have the suffix *@cloudbuild.gserviceaccount.com*.
-
-You can find it using the following:
-
-`gcloud projects get-iam-policy [PROJECT-ID] | grep @cloudbuild.gserviceaccount.com`
-Replacing [PROJECT-ID] with your GCP project ID.
-
-Once we know the Cloud Build service account we can grant the *run.admin* role to allow Cloud Build to manipulate Cloud Run resources, and the *iam.serviceAccountUser* role to allow Cloud Build to act as other service accounts, which include your Cloud Run services, by using the following:
-
- `gcloud projects add-iam-policy-binding [PROJECT_ID] --member='[SERVICE-ACCOUNT]' --role='roles/run.admin'`
-
- `gcloud projects add-iam-policy-binding [PROJECT_ID] --member='[SERVICE-ACCOUNT]' --role='roles/iam.serviceAccountUser'`
-
-Again, in both, replacing [PROJECT-ID] with your GCP project ID, and [SERVICE-ACCOUNT] with the account discovered in the previous step.
-
-#### 3. Create a Build Trigger
-
-*We'll need to do this part using the cloud.google.com site as there is not yet a way to create a build trigger through gcloud, see [this issue](https://github.com/GoogleCloudPlatform/cloud-builders/issues/99) if you are interested in more information.*
-
-1. Visit the [Cloud Build triggers page](https://console.cloud.google.com/cloud-build/triggers)
-
-2. Click Create Trigger.
-
-3. From the displayed repository list, select your repository and click Continue. For more information on specifying which branches to autobuild, see [Creating a build trigger](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds#creating_a_build_triggerr).
-
-4. Select cloudbuild.yaml in Build Configuration.
-
-5. Click Create.
-
-**You're finished! From this point on, anytime you push to your repository, you automatically trigger a build and a deployment to your Cloud Run service.**
 
 ## ☑ TODO <a name = "TODO"></a>
 
